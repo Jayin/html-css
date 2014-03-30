@@ -1,4 +1,4 @@
 html-css
 ========
 
-example of my learning html and css
+examples of my learning html and css
