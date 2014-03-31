@@ -1,0 +1,55 @@
+/* 选择器*/
+
+/*选择器的分组 */
+h1, h2, h3 {
+    color: green;
+}
+
+/*继承,根据 CSS，子元素从父元素继承属性。但是它并不总是按此方式工作*/
+body {
+    font-family: Verdana, sans-serif;
+}
+
+/*派生选择器,通过依据元素在其位置的上下文关系来定义样式*/
+/* 如果是strong li 就不行了*/
+li strong {
+    font-style: italic;
+    font-weight: normal;
+}
+
+/*
+<p><strong>我是粗体字，不是斜体字，因为我不在列表当中，所以这个规则对我不起作用</strong></p>
+<li><strong>我是斜体字。这是因为 strong 元素位于 li 元素内。</strong></li>
+*/
+
+/*id 选择器以 "#" 来定义
+<p id="red">这个段落是红色。</p>
+<p id="green">这个段落是绿色。</p>
+*/
+#red {
+    color: red;
+}
+
+#green {
+    color: green;
+}
+
+/*====类选择器=====*/
+/*基本用户*/
+.fancy {
+    text-align: center
+}
+/*和 id 一样，class 也可被用作派生选择器*/
+.fancy td {
+    color: #f60;
+    background: #666;
+}
+/*元素也可以基于它们的类而被选择*/
+td.fancy {
+    color: #f60;
+    background: #666;
+}
+
+/*<td class="fancy">*/
+
+/*=====属性选择器===*/
