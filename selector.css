@@ -39,11 +39,13 @@ li strong {
 .fancy {
     text-align: center
 }
+
 /*和 id 一样，class 也可被用作派生选择器*/
 .fancy td {
     color: #f60;
     background: #666;
 }
+
 /*元素也可以基于它们的类而被选择*/
 td.fancy {
     color: #f60;
@@ -53,3 +55,22 @@ td.fancy {
 /*<td class="fancy">*/
 
 /*=====属性选择器===*/
+/* basic 带有 title 属性的所有元素设置样式*/
+[title] {
+    color: red;
+}
+
+/*better to use属性和值选择器*/
+/*title="W3School" 的所有元素设置样式*/
+[title=W3School] {
+    border: 5px solid blue;
+}
+
+/*mroe effective 设置表单的样式 */
+input[type="text"] {
+    width: 150px;
+    display: block;
+    margin-bottom: 10px;
+    background-color: yellow;
+    font-family: Verdana, Arial;
+}
