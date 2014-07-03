@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+
+<style>
+    .simple {
+        background-color: #c4e3f3;
+        font-family: Consolas;
+        font-size: 26px;
+    }
+
+</style>
+<script>
+    function mouseover(obj) {
+        $(document).ready(function () {
+            $("p").click(function () {
+                $(this).hide();
+            });
+        });
+    }
+
+    function mouseout(obj) {
+
+    }
+
+</script>
+<body>
+
+<h3 class="simple" onmouseover="mouseover()" onmouseout="mouseout()">cool</h3>
+
+<script src="js/jquery.js"></script>
+</body>
+</html>
