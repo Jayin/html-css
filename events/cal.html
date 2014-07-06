@@ -1,0 +1,66 @@
+<html>
+<header>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<title>title</title>
+	<style >
+		.row{
+		 	margin: 5px;		
+		}
+		.col{
+			float:left;
+			padding: 20px;
+			background: blue;
+			margin: 2px;
+			color: white
+		}
+
+
+	</style>
+
+	<script type="text/javascript">
+		function click(event){
+			console.log((event));
+			alert("click !!")
+		}
+
+		function whichButton(event)
+		{
+			var btnNum = event.button;
+			console.log(event);
+			if (btnNum==2)
+			  {
+			  	// alert("您点击了鼠标右键！")		
+			  	console.log("您点击了鼠标右键！");
+
+			  }
+			else if(btnNum==0)
+			  {
+			  	// alert("您点击了鼠标左键！")
+			  	console.log("您点击了鼠标左键！");
+			  }
+			else if(btnNum==1)
+			  {
+			  	// alert("您点击了鼠标中键！");
+			  	console.log("您点击了鼠标中键！");
+
+			  }
+			else
+			  {
+			  	// alert("您点击了" + btnNum+ "号键，我不能确定它的名称。");
+			  	console.log("您点击了" + btnNum+ "号键，我不能确定它的名称。");
+			  }
+		}
+	</script>	
+</header>
+ 
+<body >
+	<div class="row">
+		<!-- <p class="col" onmousedown="click(event)">Goo</p> -->
+		<div class="col" onmousedown="whichButton(event)">1</div>
+		<div class="col" onmousedown="whichButton(event)">1</div>
+		<div class="col" onmousedown="whichButton(event)">1</div>
+		<div class="col">1</div>
+	</div>
+
+</body>
+</html>
