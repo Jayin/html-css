@@ -1,66 +1,159 @@
 <html>
 <header>
-	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-	<title>title</title>
-	<style >
-		.row{
-		 	margin: 5px;		
-		}
-		.col{
-			float:left;
-			padding: 20px;
-			background: blue;
-			margin: 2px;
-			color: white
-		}
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>title</title>
+    <style>
+
+        .row {
+            margin: 5px;
+
+        }
+
+        .col {
+            float: left;
+            width: 40px;
+            height: 40px;
+            padding: 20px;
+            background: blue;
+            margin: 2px;
+            color: white;
+            font-size: 30px;
+            text-align: center;
+
+        }
+
+        .empty {
+            width: 100%;
+            height: 1px;
+            padding: 0px;
+            margin: 0px;
+            background-color: transparent;
+        }
+
+        textarea {
+            margin-left: 10px;
+            margin-top: 20px;
+            text-align: right;
+            height: 40px;
+            width: 330px;
+            font-size: 30px;
+        }
 
 
-	</style>
+    </style>
 
-	<script type="text/javascript">
-		function click(event){
-			console.log((event));
-			alert("click !!")
-		}
+    <script type="text/javascript">
+        var a = 0;
+        var b = 0;
+        var result = 0;
+        var opt = '';
+        var has_val_a = false;
+        var has_val_b = false;
+        var has_val_opt = false;
+        element = document.getElementById('result');
 
-		function whichButton(event)
-		{
-			var btnNum = event.button;
-			console.log(event);
-			if (btnNum==2)
-			  {
-			  	// alert("您点击了鼠标右键！")		
-			  	console.log("您点击了鼠标右键！");
+        function clean() {
+            a = 0;
+            b = 0;
+            result = 0;
+            opt = '';
+            has_val_a = false;
+            has_val_b = false;
+            has_val_opt = false;
+            element.innerText = '';
+        }
 
-			  }
-			else if(btnNum==0)
-			  {
-			  	// alert("您点击了鼠标左键！")
-			  	console.log("您点击了鼠标左键！");
-			  }
-			else if(btnNum==1)
-			  {
-			  	// alert("您点击了鼠标中键！");
-			  	console.log("您点击了鼠标中键！");
+        function isNumber(text){
+            var num = parseInt(text);
+            return !isNaN(num);
+        }
 
-			  }
-			else
-			  {
-			  	// alert("您点击了" + btnNum+ "号键，我不能确定它的名称。");
-			  	console.log("您点击了" + btnNum+ "号键，我不能确定它的名称。");
-			  }
-		}
-	</script>	
+        function isOpt(opt){
+            return opt === '+' || opt ==='-' || opt ==='*' || opt ==='/'  ;
+        }
+
+        function isEqu(opt){
+            return opt === '=';
+        }
+
+        clean();
+
+        function clickButton(event) {
+            var text = event.srcElement.innerText;
+            console.log(text);
+//            document.getElementById('result').innerText = text;
+
+            if(isEqu()){
+                if(has_val_a && has_val_b && has_val_opt){
+                    if(opt === '+'){
+                        result = a + b;
+                    }else if(opt === '-'){
+                        result = a - b;
+                    }else if(opt === '*'){
+                        result = a *b;
+                    }else {
+                        //b can't be 0!
+                        result = a / b;
+                    }
+
+
+
+                }
+            }
+
+            if (!has_val_a) {
+                 if(isNumber(text)){
+                     has_val_a = true;
+                     a = parseInt(text);
+                 }else{
+                     clean();
+                 }
+            }else if(!has_val_opt){
+
+            }
+
+        }
+    </script>
 </header>
- 
-<body >
-	<div class="row">
-		<!-- <p class="col" onmousedown="click(event)">Goo</p> -->
-		<div class="col" onmousedown="whichButton(event)">1</div>
-		<div class="col" onmousedown="whichButton(event)">1</div>
-		<div class="col" onmousedown="whichButton(event)">1</div>
-		<div class="col">1</div>
-	</div>
+
+<body>
+<div class="calculator">
+    <div class="screen">
+        <textarea rows="1" id="result">0</textarea>
+    </div>
+    <div class="row">
+        <div class="col" onclick="clickButton(event)">7</div>
+        <div class="col" onclick="clickButton(event)">8</div>
+        <div class="col" onclick="clickButton(event)">9</div>
+        <div class="col" onclick="clickButton(event)">-</div>
+        <div class="col empty"></div>
+    </div>
+
+    <div class="row">
+        <div class="col" onclick="clickButton(event)">4</div>
+        <div class="col" onclick="clickButton(event)">5</div>
+        <div class="col" onclick="clickButton(event)">6</div>
+        <div class="col" onclick="clickButton(event)">*</div>
+        <div class="col empty"></div>
+    </div>
+
+    <div class="row">
+        <div class="col" onclick="clickButton(event)">1</div>
+        <div class="col" onclick="clickButton(event)">2</div>
+        <div class="col" onclick="clickButton(event)">3</div>
+        <div class="col" onclick="clickButton(event)">-</div>
+        <div class="col empty"></div>
+    </div>
+
+
+    <div class="row">
+        <div class="col" onclick="clickButton(event)">0</div>
+        <div class="col" onclick="clickButton(event)">#</div>
+        <div class="col" onclick="clickButton(event)">=</div>
+        <div class="col" onclick="clickButton(event)">+</div>
+        <div class="col empty"></div>
+    </div>
+</div>
 
 </body>
 </html>
