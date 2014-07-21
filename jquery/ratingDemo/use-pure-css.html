@@ -1,0 +1,55 @@
+<html>
+<head>
+	<title>Demo</title>
+	<script type="text/javascript" src="jquery-2.1.1.js"></script>
+	<link rel="stylesheet" type="text/css" href="jquery-rating.css">
+</head>
+<body>
+<!-- div group -->
+<div >
+
+	<div id="1" class="ratenode nomal"></div>
+	<div id="2" class="ratenode nomal "></div>
+	<div id="3" class="ratenode nomal "></div>
+	<div id="4" class="ratenode nomal "></div>
+	<div id="5" class="ratenode nomal "></div>
+</div>
+
+
+</body>
+<script type="text/javascript">
+
+$(document).ready(function() {
+	var max_item = $('.ratenode').length;
+	var currentRating = 0;
+	//only one can use
+	function reset() {
+		for (var i = 1; i <= max_item; i++) {
+			$("#" + i).removeClass('rating nomal');
+		}
+	}
+
+	$('.ratenode').bind('mouseover', function(event) {
+		reset();
+		var currentRating = parseInt(event.currentTarget.id);
+		for (var i = 1; i <= currentRating; i++) {
+			$("#" + i).addClass('rating');
+		}
+		for (var i = currentRating + 1; i <= max_item; i++) {
+			$("#" + i).addClass('nomal');
+		}
+		onChange(currentRating);
+	});
+
+	function getCurrentRating() {
+		return currentRating;
+	}
+
+	//overwrite
+	function onChangeRating(id) {
+		 
+	}
+
+});
+</script>
+</html>

@@ -1,0 +1,23 @@
+.ratenode{
+	height: 40px;
+	width:40px;
+	padding: 4px;
+	background: white;
+	border:5px solid black ;
+	float: left
+}
+
+.nomal{
+	background-color: white;
+}
+
+
+/*on mouse over*/
+.pending{
+	background-color: blue;
+}
+
+/*on selected*/
+.selected{
+	background-color: yellow;
+}
