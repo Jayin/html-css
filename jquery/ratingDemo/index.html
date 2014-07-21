@@ -1,0 +1,64 @@
+<html>
+<head>
+	<title>Demo</title>
+	<script type="text/javascript" src="jquery-2.1.1.js"></script>
+	<link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+<!-- div group -->
+<div >
+
+	<div id="1" class="ratenode "></div>
+	<div id="2" class="ratenode "></div>
+	<div id="3" class="ratenode "></div>
+	<div id="4" class="ratenode "></div>
+	<div id="5" class="ratenode "></div>
+</div>
+
+
+</body>
+<script type="text/javascript">
+$(document).ready(function(){
+	var current_id = -1;
+	var max_item = 5;
+
+	function reset(){
+		for(var i=1;i<=max_item;i++){
+			$("#"+i).removeClass('pending selected');
+		}
+	}
+
+	function refreshSelect(){
+		reset();
+		if(current_id>0){
+			for(var i=1;i<=current_id;i++){
+				$("#"+i).addClass('selected');
+			}
+		}
+	}
+
+	$('.ratenode').bind('mouseover',function(event){
+		reset();
+		for(var i=1;i<=parseInt(event.currentTarget.id);i++){
+			$("#"+i).addClass('pending');
+		}
+	});
+
+	$('.ratenode').bind('mouseleave',function(event){
+		refreshSelect();
+	});
+
+	$('.ratenode').bind('click',function(event){
+		current_id = parseInt(event.currentTarget.id);
+		refreshSelect();
+	});
+
+
+});
+
+
+//set 5 div and 1 div-group
+//bind the event on every div,when move over the head,change the color into grey
+//when click then rating ,it
+</script>
+</html>
