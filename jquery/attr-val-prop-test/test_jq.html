@@ -1,0 +1,44 @@
+<html>
+<head>
+	<script src="jquery-2.1.1.js" href="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+</head>
+<body>
+	<input id="input" type="text" value="default">
+	<input id="button1" type="button" value="use-->val">
+
+	<input id="button2" type="button" value="use-->attr">
+
+	<input id="button3" type="button" value="use-->prop">
+
+
+<script >
+$(document).ready(function(){
+	
+	console.log('jquery is ready....');
+
+
+	 
+	
+	$('#button1').on('click',function(){
+		alert($("#input").val());
+	});
+
+	$('#button2').on('click',function(){
+		alert($('#input').attr('value'));
+
+	});
+
+	$('#button3').on('click',function(){
+		alert($('#input').prop('value'));
+
+	});
+
+});
+
+
+
+</script>
+</body>
+
+
+</html>
