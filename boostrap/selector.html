@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bootstrap 101 Template</title>
+
+    <!-- Bootstrap -->
+    <link href="static/css/bootstrap.min.css" rel="stylesheet">
+    <style type="text/css">
+    .modal-body-center {
+        text-align: center;
+    }
+    .mydropdown {
+        margin: 1em;
+    }
+    select {
+        background: #F8F8F8;
+        border: 1px solid #CCCCCC;
+        padding: 2px;
+        width: 160px;
+    }
+    </style>
+
+</head>
+
+<body>
+    <!-- Button trigger modal -->
+    <button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
+        Buy the Vehicle
+    </button>
+
+    <!-- Modal -->
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">
+                        <span aria-hidden="true">&times;</span>
+                        <span class="sr-only">Close</span>
+                    </button>
+                    <h4 class="modal-title" id="myModalLabel">Select Vehicle</h4>
+                </div>
+                <div class="modal-body modal-body-center">
+                    <div>
+                        <div class="mydropdown">
+                            <select name="make" id="selectMake">
+                                <option value="0">Select Make</option>
+
+                            </select>
+                        </div>
+                        <div class="mydropdown">
+                            <select name="year" id="selectYear">
+                                <option value="0">Select Year</option>
+
+                            </select>
+                        </div>
+                        <div class="mydropdown">
+                            <select name="model" id="selectModel">
+                                <option value="0">Select Model</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer"></div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="static/js/jquery-2.1.1.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="static/js/bootstrap.js"></script>
+
+    <script type="text/javascript">
+    $(document).ready(function() {
+
+        function getMake() {
+            $.getJSON('make.json', function(data) {
+                // console.log(json);
+                $.each(data, function(index, val) {
+
+                    $('#selectMake').append('<option value="' + val['name'] + '">' + val['name'] + '</option>');
+
+                });
+            });
+        }
+
+        function getYear() {
+            $.getJSON('year.json', function(data) {
+                // console.log(json);
+                $.each(data, function(index, val) {
+
+                    $('#selectYear').append('<option value="' + val['year'] + '">' + val['year'] + '</option>');
+
+                });
+            });
+        }
+
+
+        function getModel() {
+            $.getJSON('model.json', function(data) {
+                // console.log(json);
+                $.each(data, function(index, val) {
+
+                    $('#selectModel').append('<option value="' + val['type'] + '">' + val['type'] + '</option>');
+
+                });
+            });
+        }
+
+
+        $('#selectYear').hide();
+        $('#selectModel').hide();
+
+        $('#selectMake').on('change', function() {
+            $('#selectYear option').remove();
+            $('#selectYear').append('<option value="0">Select Year</option>');
+
+            if ($('#selectMake').val() !== "0") {
+                $('#selectYear').fadeIn();
+                getYear();
+            } else {
+                $('#selectYear').fadeOut();
+                $('#selectModel').fadeOut();
+            }
+        });
+
+        $('#selectYear').on('change', function() {
+            $('#selectModel option').remove();
+            $('#selectModel').append('<option value="0">Select Model</option>');
+
+            if ($('#selectYear').val() !== "0") {
+                $('#selectModel').fadeIn();
+                getModel();
+            } else {
+                $('#selectModel').fadeOut();
+            }
+        });
+
+        $('#selectModel').on('change', function() {
+            if ($('#selectModel').val() !== "0") {
+                //send the request!
+                setTimeout(function(){
+                    location = 'ok.html';    
+                },1500);
+            }
+        });
+
+        getMake();
+
+    });
+    </script>
+</body>
+
+</html>
