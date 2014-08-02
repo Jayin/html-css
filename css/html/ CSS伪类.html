@@ -1,0 +1,49 @@
+<html>
+<head>
+    <title> CSS 伪类</title>
+    <meta charset="utf-8">
+</head>
+
+<style>
+    a:link{
+        background: white;
+        color: black;
+        font-size: 2em;
+    }
+    a:hover{
+        background:#CCCCCC;
+        color: white;
+    }
+    a:active{
+        background:#CCCCCC;
+        color: black;
+    }
+
+   /* 伪元素*/
+    h2:before{
+        content:"before";
+        color:red;
+    }
+
+    h2{
+        content:black;
+        font-size: 2em;
+    }
+
+    h2:after{
+        content:"after";
+        color:blue;
+    }
+
+    h2:first-letter{
+        color:#CCCCCC;
+        font-size: 1em;
+    }
+</style>
+<body>
+
+<a href="#">Nice</a>
+
+<h2>Title</h2>
+</body>
+</html>
