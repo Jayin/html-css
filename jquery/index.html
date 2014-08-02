@@ -1,0 +1,38 @@
+<html>
+<head>
+	<title>Demo</title>
+	<script type="text/javascript" src="jquery-2.1.1.js"></script>
+	<link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+     <p id="content">Hello world</p>
+
+     <!-- div group -->
+    <div >
+        <!-- with order number -->
+        <div id="1" class="ratenode nomal"></div>
+        <div id="2" class="ratenode nomal "></div>
+        <div id="3" class="ratenode nomal "></div>
+        <div id="4" class="ratenode nomal "></div>
+        <div id="5" class="ratenode nomal "></div>
+    </div>
+</body>
+<script type="text/javascript">
+$(document).ready(function(){
+	 
+    $(document).delegate("#content",'click',function(){
+            alert("you click");
+    });
+    
+    
+    $(document).delegate("#content",'hi',function(){
+    
+            console.log("hi");
+    });
+    
+    setInterval('$("#content").trigger("hi");',1000);
+
+});
+ 
+</script>
+</html>
